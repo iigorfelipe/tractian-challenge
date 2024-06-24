@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import { Company } from '../../services/types/company';
 
 export type AssetTitle = 'Apex Unit' | 'Tobias Unit' | 'Jaguar Unit';
 export type AssetLabel = 'apexUnit' | 'tobiasUnit' | 'jaguarUnit';
@@ -16,17 +17,24 @@ export const initialAsset: Asset = {
 export type SettingsContext = {
   asset: Asset;
   setAsset: React.Dispatch<React.SetStateAction<Asset>>;
-  selectedAsset: AssetTitle | null;
-  setSelectedAsset: React.Dispatch<React.SetStateAction<AssetTitle | null>>;
-  handleSelectedAsset: (asset: AssetTitle | null) => void;
+  selectedCompanie: Company | null;
+  setSelectedCompanie: React.Dispatch<React.SetStateAction<Company | null>>;
+  handleSelectedCompanie: (id: number) => void;
+
+  companies: Company[];
+  setCompanies: React.Dispatch<React.SetStateAction<Company[]>>;
+  addCompany: (companyName: string) => void;
 };
 
 export const defaultSettingsValues: SettingsContext = {
   asset: initialAsset,
   setAsset: () => {},
-  selectedAsset: null,
-  setSelectedAsset: () => {},
-  handleSelectedAsset: () => {}
+  selectedCompanie: null,
+  setSelectedCompanie: () => {},
+  handleSelectedCompanie: () => {},
+  companies: [],
+  setCompanies: () => {},
+  addCompany: () => {}
 };
 
 export const SettingsContext = createContext<SettingsContext>(defaultSettingsValues);

@@ -7,13 +7,13 @@ import Header from '../../components/header';
 
 const Home = () => {
   const { isSmDown } = useTheme();
-  const { selectedAsset } = useSettings();
+  const { selectedCompanie } = useSettings();
 
   return (
     <div>
       <Header />
       {
-        selectedAsset !== null && (
+        selectedCompanie?.id && (
           <div
             style={{ padding: isSmDown ? '0px' : '10px', }}
           >
