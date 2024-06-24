@@ -53,6 +53,7 @@ const SubHeader = () => {
             style={{
               fontWeight: 400,
               fontSize: '14px',
+              marginTop: '5px'
             }}
           >
             / {selectedAsset}
