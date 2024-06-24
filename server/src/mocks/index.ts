@@ -29,8 +29,9 @@ export const assetCompanyMock = [
 ];
 
 export const companiesMock = [
-  { id: 'company1', name: 'Company 1' },
-  { id: 'company2', name: 'Company 2' },
+  { id: '1_apex-unit', name: 'Apex Unit' },
+  { id: '2_tobias-unit', name: 'Tobias Unit' },
+  { id: '3_jaguar-unit', name: 'Jaguar Unit' },
 ];
 
 export const locationCompanyMock = [
