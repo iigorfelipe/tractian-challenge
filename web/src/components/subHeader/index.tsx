@@ -6,7 +6,7 @@ import { communColors } from "../../contexts/theme/theme";
 
 const SubHeader = () => {
   const { isSmDown } = useTheme();
-  const { selectedAsset } = useSettings();
+  const { selectedCompanie } = useSettings();
   const [selectedButton, setSelectedButton] = useState<ButtonLabel>(null);
 
   const handleSelectedButton = (button: ButtonLabel) => {
@@ -15,7 +15,7 @@ const SubHeader = () => {
 
   useEffect(() => {
     setSelectedButton(null);
-  }, [selectedAsset]);
+  }, [selectedCompanie?.id]);
   
   return (
     <div
@@ -56,7 +56,7 @@ const SubHeader = () => {
               marginTop: '5px'
             }}
           >
-            / {selectedAsset}
+            / {selectedCompanie?.name}
           </span>
         </div>
 
