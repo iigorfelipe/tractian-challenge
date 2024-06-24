@@ -16,6 +16,7 @@ const ThemeProvider = ({ children }: Props) => {
   const selectedTheme = theme === 'light' ? Light : Dark;
 
   const isSmDown = useMediaQuery('(max-width: 600px)');
+  const isMdDown = useMediaQuery('(max-width: 1100px)');
 
   const toggleTheme = () => setTheme(oppositeTheme);
 
@@ -25,6 +26,7 @@ const ThemeProvider = ({ children }: Props) => {
     oppositeTheme,
     toggleTheme,
     isSmDown,
+    isMdDown,
   };
 
   return (
@@ -33,7 +35,8 @@ const ThemeProvider = ({ children }: Props) => {
         style={{
           backgroundColor: selectedTheme.colors.bg,
           color: selectedTheme.colors.txt,
-          minHeight: '100vh'
+          minHeight: '100vh',
+          fontFamily: 'Inter'
         }}
       >
         {children}

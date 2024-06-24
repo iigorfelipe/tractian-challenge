@@ -9,6 +9,7 @@ export type ThemeContext = {
   selectedTheme: SelectedTheme;
   toggleTheme: () => void;
   isSmDown: boolean;
+  isMdDown: boolean;
 };
 
 export const defaultThemeValues: ThemeContext = {
@@ -17,6 +18,7 @@ export const defaultThemeValues: ThemeContext = {
   selectedTheme: {} as SelectedTheme,
   toggleTheme: () => {},
   isSmDown: false,
+  isMdDown: false,
 };
 
 export const ThemeContext = createContext<ThemeContext>(defaultThemeValues);
