@@ -37,9 +37,9 @@ const SettingsProvider = ({ children }: Props) => {
   };
 
   const handleSelectedCompanie = (id: string) => {
-    const company = companies.find((company) => company.id === id) || null
+    const company = companies.find((company) => company.id === id) || null;
 
-    if (company && company.id) {
+    if (company && company.id && selectedCompanie?.company.id !== id) {
       const fetchLocations = async () => {
         try {
           const locations = await getLocationsByCompany(company.id);
