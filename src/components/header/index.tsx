@@ -12,7 +12,8 @@ const Header = () => {
     selectedCompanie,
     setSelectedCompanie,
     companies,
-    addCompany
+    addCompany,
+    pending
   } = useSettings();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -117,6 +118,7 @@ const Header = () => {
                 key={id}
                 type='button'
                 onClick={() => handleSelectedCompanie(id)}
+                disabled={pending}
                 style={{
                   display: isOpen && isMdDown && !isSmDown ? 'none' : 'flex',
                   alignItems: 'center',
@@ -130,7 +132,7 @@ const Header = () => {
                   border: 'none',
                   background: selectedCompanie?.company.id === id ? communColors.extra3 : communColors.extra2,
                   color: 'white',
-                  cursor: 'pointer',
+                  cursor: pending ? 'wait' : 'pointer',
                 }}
               >
                 <img
@@ -191,6 +193,7 @@ const Header = () => {
                           key={id}
                           type='button'
                           onClick={() => handleSelectedCompanie(id)}
+                          disabled={pending}
                           style={{
                             display: isMdDown && isOpen ? 'none' : 'flex',
                             alignItems: 'center',
@@ -204,7 +207,7 @@ const Header = () => {
                             border: 'none',
                             background: selectedCompanie?.company.id === id ? communColors.extra3 : communColors.extra2,
                             color: 'white',
-                            cursor: 'pointer',
+                            cursor: pending ? 'wait' : 'pointer',
                           }}
                         >
                           <img

@@ -24,6 +24,7 @@ export type SettingsContext = {
   companies: Company[];
   setCompanies: React.Dispatch<React.SetStateAction<Company[]>>;
   addCompany: (companyName: string) => void;
+  pending: boolean;
 };
 
 export const defaultSettingsValues: SettingsContext = {
@@ -34,7 +35,8 @@ export const defaultSettingsValues: SettingsContext = {
   handleSelectedCompanie: () => {},
   companies: [],
   setCompanies: () => {},
-  addCompany: () => {}
+  addCompany: () => {},
+  pending: false
 };
 
 export const SettingsContext = createContext<SettingsContext>(defaultSettingsValues);

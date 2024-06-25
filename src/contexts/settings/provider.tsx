@@ -15,54 +15,63 @@ const SettingsProvider = ({ children }: Props) => {
   const [asset, setAsset] = useState<Asset>(initialAsset);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [selectedCompanie, setSelectedCompanie] = useState<TreeView | null>(null);
+  const [pending, setPending] = useState(false);
 
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
+        setPending(true);
         const data = await getAllCompanies();
         setCompanies(data);
       } catch (error) {
         console.error(error);
-      };
+      } finally {
+        setPending(false);
+      }
     };
 
     fetchCompanies();
   }, []);
 
   const addCompany = async (companyName: string) => {
-    const newCompany = await createCompany(companyName);
-    if (newCompany && newCompany.id) {
-      setCompanies([...companies, newCompany]);
-    };
+    setPending(true);
+    try {
+      const newCompany = await createCompany(companyName);
+      if (newCompany && newCompany.id) {
+        setCompanies([...companies, newCompany]);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setPending(false);
+    }
   };
 
-  const handleSelectedCompanie = (id: string) => {
+  const handleSelectedCompanie = async (id: string) => {
     const company = companies.find((company) => company.id === id) || null;
 
     if (company && company.id && selectedCompanie?.company.id !== id) {
-      const fetchLocations = async () => {
-        try {
-          const locations = await getLocationsByCompany(company.id);
-          const assets = await getAssetsByCompany(company.id);
+      try {
+        setPending(true);
+        const [locations, assets] = await Promise.all([
+          getLocationsByCompany(company.id),
+          getAssetsByCompany(company.id)
+        ]);
 
-          setSelectedCompanie({
-            company,
-            locations,
-            assets,
-          });
-
-        } catch (error) {
-          console.error(error);
-        };
-      };
-  
-      fetchLocations();
-
+        setSelectedCompanie({
+          company,
+          locations,
+          assets,
+        });
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setPending(false);
+      }
     } else {
       setSelectedCompanie(null);
-    };
+    }
   };
-  
 
   const providerValues: SettingsContext = {
     asset,
@@ -72,7 +81,8 @@ const SettingsProvider = ({ children }: Props) => {
     handleSelectedCompanie,
     companies,
     setCompanies,
-    addCompany
+    addCompany,
+    pending
   };
 
   return (
