@@ -40,6 +40,7 @@ const AddCompanyModal = ({
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
+        marginBottom: isOpen && isSmDown ? '10px' : '0px',
       }}
     >
       {isOpen && (

@@ -24,7 +24,7 @@ export const Dark = {
   title: 'dark',
 
   colors: {
-    bg: '#2E2E2E',
+    bg: '#444',
     txt: '#FFF',
     ...communColors,
   },

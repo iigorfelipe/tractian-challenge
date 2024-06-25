@@ -5,16 +5,25 @@ import { useTheme } from '../../contexts/theme';
 
 type TreeItemProps = {
   node: TreeNode;
+  selectedNode: TreeNode | null;
+  setSelectedNode: (node: TreeNode | null) => void;
 };
 
-const TreeItem = ({ node }: TreeItemProps) => {
+const TreeItem = ({ node, selectedNode, setSelectedNode }: TreeItemProps) => {
   const [expanded, setExpanded] = useState(false);
   const { theme } = useTheme();
+
+  const isSelected = selectedNode?.id === node.id;
+
+  const handleClick = () => {
+    setExpanded(!expanded);
+    setSelectedNode(node);
+  };
 
   return (
     <div style={{ marginLeft: '20px' }}>
       <div
-        onClick={() => setExpanded(!expanded)}
+        onClick={handleClick}
         style={{
           cursor: 'pointer',
           display: 'flex',
@@ -22,10 +31,11 @@ const TreeItem = ({ node }: TreeItemProps) => {
           justifyContent: 'start',
           gap: '6px',
           padding: '7px',
+          backgroundColor: isSelected ? (theme === 'dark' ? '#2E2E2E' : 'lightblue') : 'transparent',
         }}
       >
         {
-          node.children && node.children?.length > 0 ? (
+          node.children && node.children.length > 0 ? (
             <img
               src={`/arrow-down-${theme}.svg`}
               alt="arrow down"
@@ -53,10 +63,15 @@ const TreeItem = ({ node }: TreeItemProps) => {
 
       {
         expanded && node.children && (
-          <div style={{ marginLeft: '2px'}}>
+          <div style={{ marginLeft: '2px' }}>
             {
               node.children.map((child) => (
-                <TreeItem key={child.id} node={child} />
+                <TreeItem
+                  key={child.id}
+                  node={child}
+                  selectedNode={selectedNode}
+                  setSelectedNode={setSelectedNode}
+                />
               ))
             }
           </div>
@@ -69,11 +84,18 @@ const TreeItem = ({ node }: TreeItemProps) => {
 const TreeView = () => {
   const { selectedCompanie } = useSettings();
   const treeData = selectedCompanie ? useTreeData(selectedCompanie) : null;
+  const [selectedNode, setSelectedNode] = useState<TreeNode | null>(null);
+
   return (
-    <div>
+    <div style={{ marginTop: '10px'}}>
       {
         treeData?.map((data) => (
-          <TreeItem key={data.id} node={data} />
+          <TreeItem
+            key={data.id}
+            node={data}
+            selectedNode={selectedNode}
+            setSelectedNode={setSelectedNode}
+          />
         ))
       }
     </div>
