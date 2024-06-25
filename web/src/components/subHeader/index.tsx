@@ -15,14 +15,14 @@ const SubHeader = () => {
 
   useEffect(() => {
     setSelectedButton(null);
-  }, [selectedCompanie?.id]);
+  }, [selectedCompanie?.company.id]);
   
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
-        padding: '10px',
+        marginBottom: '10px',
       }}
     >
       <div
@@ -56,7 +56,7 @@ const SubHeader = () => {
               marginTop: '5px'
             }}
           >
-            / {selectedCompanie?.name}
+            / {selectedCompanie?.company.name}
           </span>
         </div>
 

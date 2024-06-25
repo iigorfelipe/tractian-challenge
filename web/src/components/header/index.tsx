@@ -35,7 +35,7 @@ const Header = () => {
 
   const openModal = () => setIsOpen(true);
   
-  const maxTags = isSmDown ? companies.length : (isMdDown ? 3 : 4);
+  const maxTags = isSmDown ? companies.length : (isMdDown ? 2 : 4);
 
   const visibleCompanies = companies.slice(0, maxTags);
   const hiddenCompanies  = companies.slice(maxTags);
@@ -44,23 +44,28 @@ const Header = () => {
     <button
       onClick={toggleTheme}
       style={{
-        background: 'none',
+        background: isSmDown && !selectedCompanie?.company.id ? '#2188FF' : 'none',
         border:'none',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        padding: isSmDown && !selectedCompanie?.company.id ? '10px 10px' : '0px',
+        borderRadius: isSmDown && !selectedCompanie?.company.id ? '20px' : '0px',
+        width: isSmDown && !selectedCompanie?.company.id ? '100%' : '',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
       <img src='/theme.svg' alt='theme icon' />
     </button>
   );
 
-  return isSmDown && selectedCompanie?.id ? (
+  return isSmDown && selectedCompanie?.company.id ? (
     <div
       style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         background: communColors.extra1,       
-        padding: '10px'
+        padding: '20px'
       }}
     >
       <button
@@ -74,7 +79,7 @@ const Header = () => {
         <img src='/arrow-back.svg' alt='arrow back' />
       </button>
 
-      <span style={{ color: 'white' }}>{selectedCompanie.name}</span>
+      <span style={{ color: 'white' }}>{selectedCompanie.company.name}</span>
 
       {ButtonTheme}
     </div>
@@ -87,7 +92,7 @@ const Header = () => {
         justifyContent: 'space-between',
         background: communColors.extra1,
         height: '50px',
-        padding: '0px 10px',
+        padding: '0 20px',
       }}
     >
       <div style={{ marginTop: isSmDown ? '18px' : '0px' }}>
@@ -123,7 +128,7 @@ const Header = () => {
                   fontFamily: 'Inter',
                   borderRadius: '4px',
                   border: 'none',
-                  background: selectedCompanie?.id === id ? communColors.extra3 : communColors.extra2,
+                  background: selectedCompanie?.company.id === id ? communColors.extra3 : communColors.extra2,
                   color: 'white',
                   cursor: 'pointer',
                 }}
@@ -133,7 +138,7 @@ const Header = () => {
                   alt="cubes-icon"
                   style={{
                     marginRight: '5px',
-                    color: selectedCompanie?.id === id ? 'white' : communColors.extra4,
+                    color: selectedCompanie?.company.id === id ? 'white' : communColors.extra4,
                   }}
                 />
                 {name}
@@ -197,7 +202,7 @@ const Header = () => {
                             fontFamily: 'Inter',
                             borderRadius: '4px',
                             border: 'none',
-                            background: selectedCompanie?.id === id ? communColors.extra3 : communColors.extra2,
+                            background: selectedCompanie?.company.id === id ? communColors.extra3 : communColors.extra2,
                             color: 'white',
                             cursor: 'pointer',
                           }}
@@ -207,7 +212,7 @@ const Header = () => {
                             alt="cubes-icon"
                             style={{
                               marginRight: '5px',
-                              color: selectedCompanie?.id === id ? 'white' : communColors.extra4,
+                              color: selectedCompanie?.company.id === id ? 'white' : communColors.extra4,
                             }}
                           />
                           {name}
@@ -231,7 +236,9 @@ const Header = () => {
             marginTop: '1px',
             padding: isSmDown ? '10px 10px' : '0px',
             borderRadius: isSmDown ? '20px' : '0px',
-            
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
           <img src='/add.svg' alt='add icon' />

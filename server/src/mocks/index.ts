@@ -24,7 +24,8 @@ export const assetCompanyMock = [
     parentId: '656a07c3f2d4a1001e2144c5',
     sensorId: 'FIJ309',
     sensorType: 'vibration',
-    status: 'operating', gatewayId: 'FRH546'
+    status: 'operating',
+    gatewayId: 'FRH546'
   },
 ];
 
