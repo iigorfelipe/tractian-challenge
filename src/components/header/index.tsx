@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import { useSettings } from "../../contexts/settings";
-import { useTheme } from "../../contexts/theme";
-import { communColors } from "../../contexts/theme/theme";
-import AddCompanyModal from "../modal";
+import { useEffect, useRef, useState } from 'react';
+import { useSettings } from '../../contexts/settings';
+import { useTheme } from '../../contexts/theme';
+import { communColors } from '../../contexts/theme/theme';
+import AddCompanyModal from '../modal';
 
 
 const Header = () => {

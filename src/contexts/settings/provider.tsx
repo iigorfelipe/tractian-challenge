@@ -1,10 +1,11 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { Asset, SettingsContext, initialAsset } from './context';
-import { createCompany, getAllCompanies } from '../../services/api/companies';
 
+import { createCompany, getAllCompanies } from '../../services/api/companies';
 import { getLocationsByCompany } from '../../services/api/locations';
 import { Company, TreeView } from '../../services/types/treeView';
 import { getAssetsByCompany } from '../../services/api/assets';
+
+import { Asset, SettingsContext, initialAsset } from './context';
 
 type Props = {
   children: ReactNode;

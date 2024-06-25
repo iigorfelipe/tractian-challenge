@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import usePersistedState from '../../hooks/usePersistedState';
-
-import { ThemeContext, Theme } from "./context";
-import { Light, Dark } from "./theme";
 import useMediaQuery from '../../hooks/useMediaQuery';
+import { ThemeContext, Theme } from './context';
+import { Light, Dark } from './theme';
 
 type Props = {
   children: ReactNode;
