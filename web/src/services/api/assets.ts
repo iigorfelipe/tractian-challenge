@@ -1,6 +1,6 @@
-import request from './index';
-import { Asset } from '../types/asset';
+import api from './index';
+import { Asset } from '../types/treeView';
 
 export const getAssetsByCompany = async (companyId: string): Promise<Asset[]> => {
-  return request<Asset[]>(`/assets/${companyId}`);
+  return api<Asset[]>(`/companies/${companyId}/assets`);
 };

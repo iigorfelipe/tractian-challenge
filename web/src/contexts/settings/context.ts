@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Company } from '../../services/types/company';
+import { Company, TreeView } from '../../services/types/treeView';
 
 export type AssetTitle = 'Apex Unit' | 'Tobias Unit' | 'Jaguar Unit';
 export type AssetLabel = 'apexUnit' | 'tobiasUnit' | 'jaguarUnit';
@@ -17,9 +17,9 @@ export const initialAsset: Asset = {
 export type SettingsContext = {
   asset: Asset;
   setAsset: React.Dispatch<React.SetStateAction<Asset>>;
-  selectedCompanie: Company | null;
-  setSelectedCompanie: React.Dispatch<React.SetStateAction<Company | null>>;
-  handleSelectedCompanie: (id: number) => void;
+  selectedCompanie: TreeView | null;
+  setSelectedCompanie: React.Dispatch<React.SetStateAction<TreeView | null>>;
+  handleSelectedCompanie: (id: string) => void;
 
   companies: Company[];
   setCompanies: React.Dispatch<React.SetStateAction<Company[]>>;

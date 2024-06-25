@@ -1,7 +1,10 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Asset, SettingsContext, initialAsset } from './context';
-import { createCompany, getAllCompanies } from '../../services/api/campanies';
-import { Company } from '../../services/types/company';
+import { createCompany, getAllCompanies } from '../../services/api/companies';
+
+import { getLocationsByCompany } from '../../services/api/locations';
+import { Company, TreeView } from '../../services/types/treeView';
+import { getAssetsByCompany } from '../../services/api/assets';
 
 type Props = {
   children: ReactNode;
@@ -10,7 +13,7 @@ type Props = {
 const SettingsProvider = ({ children }: Props) => {
   const [asset, setAsset] = useState<Asset>(initialAsset);
   const [companies, setCompanies] = useState<Company[]>([]);
-  const [selectedCompanie, setSelectedCompanie] = useState<Company | null>(null);
+  const [selectedCompanie, setSelectedCompanie] = useState<TreeView | null>(null);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -32,9 +35,31 @@ const SettingsProvider = ({ children }: Props) => {
     };
   };
 
-  const handleSelectedCompanie = (id: number) => {
-    const company = companies.find((company) => company.id === id) || null;
-    setSelectedCompanie(company);
+  const handleSelectedCompanie = (id: string) => {
+    const company = companies.find((company) => company.id === id) || null
+
+    if (company && company.id) {
+      const fetchLocations = async () => {
+        try {
+          const locations = await getLocationsByCompany(company.id);
+          const assets = await getAssetsByCompany(company.id);
+
+          setSelectedCompanie({
+            company,
+            locations,
+            assets,
+          });
+
+        } catch (error) {
+          console.error(error);
+        };
+      };
+  
+      fetchLocations();
+
+    } else {
+      setSelectedCompanie(null);
+    };
   };
   
 

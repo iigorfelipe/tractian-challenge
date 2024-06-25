@@ -1,12 +1,12 @@
-import request from './index';
-import { Company } from '../types/company';
+import { Company } from '../types/treeView';
+import api from './index';
 
 export const getAllCompanies = async (): Promise<Company[]> => {
-  return request<Company[]>('/companies');
+  return api<Company[]>('/companies');
 };
 
 export const createCompany = async (name: string): Promise<Company> => {
-  return request<Company>('/companies', {
+  return api<Company>('/companies', {
     method: 'POST',
     body: JSON.stringify({ name }),
   });

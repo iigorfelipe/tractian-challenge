@@ -1,10 +1,7 @@
-const API_BASE_URL = 'http://localhost:3000'; // TODO: change endpoint
+const API_BASE_URL = 'https://fake-api.tractian.com';
 
-const request = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
+const api = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
     ...options,
   });
 
@@ -15,4 +12,4 @@ const request = async <T>(endpoint: string, options?: RequestInit): Promise<T> =
   return response.json();
 };
 
-export default request;
+export default api;
