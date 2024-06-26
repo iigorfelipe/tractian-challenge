@@ -6,11 +6,12 @@ import AddCompanyModal from '../modal';
 
 
 const Header = () => {
-  const { toggleTheme, isSmDown, isMdDown } = useTheme();
+  const { toggleTheme, isSmDown, isMdDown, theme } = useTheme();
   const {
     handleSelectedCompanie,
     selectedCompanie,
     setSelectedCompanie,
+    setSelectedNode,
     companies,
     addCompany,
     pending
@@ -70,14 +71,17 @@ const Header = () => {
       }}
     >
       <button
-        onClick={() => setSelectedCompanie(null)}
+        onClick={() => {
+          setSelectedCompanie(null)
+          setSelectedNode(null)
+        }}
         style={{
           background: 'none',
           border:'none',
           cursor: 'pointer'
         }}
       >
-        <img src='/arrow-back.svg' alt='arrow back' />
+        <img src='/arrow-back-dark.svg' alt='arrow back' />
       </button>
 
       <span style={{ color: 'white' }}>{selectedCompanie.company.name}</span>

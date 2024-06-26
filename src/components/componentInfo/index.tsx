@@ -1,9 +1,11 @@
 import { useSettings } from '../../contexts/settings';
+import { useTheme } from '../../contexts/theme';
 import { communColors } from '../../contexts/theme/theme';
 
 
 const ComponentInfo = () => {
-  const { selectedNode } = useSettings();
+  const { selectedNode, setSelectedNode } = useSettings();
+  const { isSmDown, theme } = useTheme();
   
   const infos = {
     topLeft: [
@@ -50,6 +52,25 @@ const ComponentInfo = () => {
           gap: '10px'
         }}
       >
+
+        {
+          isSmDown && (
+            <button
+              style={{
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                padding: '5px 15px'            
+              }}
+              onClick={() => setSelectedNode(null)}
+            >
+              <img src={`/arrow-back-${theme}.svg`} alt='arrow back' />
+            </button>
+          )
+        }
+
         {selectedNode?.label}
         {
           selectedNode?.icon && (
@@ -65,14 +86,14 @@ const ComponentInfo = () => {
           padding: '30px',          
         }}
       >
-
         <div
           style={{
             display: 'flex',
-            gap: '30px',            
+            flexDirection: isSmDown ? 'column' : 'row',
+            gap: '30px',
+            alignItems: isSmDown ? 'center' : ''
           }}
         >
-          
           <div
             style={{
               display: 'flex',
@@ -80,7 +101,7 @@ const ComponentInfo = () => {
               alignItems: 'center',
               justifyContent: 'center',
               border: `1px dashed ${communColors.extra5}`,
-              width: '336px',
+              width: isSmDown ? '100%' : '336px',
               height: '226px',
               borderRadius: '4px',
               background: '#55a7ff34',
@@ -92,7 +113,9 @@ const ComponentInfo = () => {
               style={{
                 color: communColors.extra3,
                 fontWeight: 600,
-                fontSize: '16px'   
+                fontSize: '16px',
+                display: 'flex',
+                textAlign: 'center'
               }}
             >
               Adicionar imagem do Ativo
@@ -102,8 +125,10 @@ const ComponentInfo = () => {
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
-              width: '50%'
+              flexDirection: isSmDown ? 'row' : 'column',
+              width: isSmDown ? '100%' : '50%',
+              // gap: '10px',
+              justifyContent: 'space-between'
             }}
           >
             {
@@ -113,14 +138,14 @@ const ComponentInfo = () => {
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'start',
+                    alignItems: isSmDown ? 'center' : 'start',
                     flexDirection: 'column',
                     gap: '8px',
-                    height: '50%',               
-                    borderBottom: `1px solid ${communColors.extra5}`,
+                    height: '50%',
+                    width: '100%',            
+                    borderBottom: !isSmDown && index === 0 ? `1px solid ${communColors.extra5}` : 'none',                    
                   }}
                 >
-                  
                   <span
                     style={{
                       fontWeight: 600,
@@ -134,9 +159,9 @@ const ComponentInfo = () => {
                     style={{
                       display: 'flex',
                       gap: '10px',
-                      alignItems: 'center',
+                      textAlign: isSmDown ? 'center' : 'start',
                     }}
-                  >
+                    >
                     {
                       index === 1 && (
                         <span
@@ -155,6 +180,7 @@ const ComponentInfo = () => {
                         >
                           {value?.[0]}
                         </span>
+                        
                       )
                     }
                     <span
@@ -189,7 +215,7 @@ const ComponentInfo = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: 'start',
+                  alignItems: isSmDown ? 'center' : 'start',
                   justifyContent: 'center',
                   width: '50%',
                   fontWeight: 600,

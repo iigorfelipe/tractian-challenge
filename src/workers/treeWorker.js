@@ -31,7 +31,6 @@ self.addEventListener('message', function(e) {
     const assetMap = {};
 
     assets.forEach((asset) => {
-      console.log({ asset })
       let icon = '';
       let componentIcon = '';
 

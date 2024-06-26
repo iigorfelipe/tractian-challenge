@@ -7,30 +7,35 @@ import TreeView from "../treeView";
 
 const Main = () => {
 
-  const { isSmDown } = useTheme();
+  const { isSmDown, isMdDown } = useTheme();
   const { selectedNode } = useSettings();
 
   return (
     <div
       style={{
         display: 'flex',
-        flexDirection: isSmDown ? 'column' : 'row',
+        flexDirection: isMdDown ? 'column' : 'row',
         width: '100%',
         gap: '10px'
       }}
     >
 
-      <div
-        style={{
-          border: `1px solid ${communColors.extra5}`,
-          borderRadius: '4px',
-          minWidth: '40%',
-        }}
-      >
-        <SearchInput placeholder="Buscar Ativo ou Local" />
-
-        <TreeView />
-      </div>
+      {
+        isSmDown && selectedNode?.componentIcon ? null : (
+          <div
+            style={{
+              border: `1px solid ${communColors.extra5}`,
+              borderRadius: '4px',
+              minWidth: isSmDown ? '100%' : '40%',
+            }}
+          >
+            <SearchInput placeholder="Buscar Ativo ou Local" />
+    
+            <TreeView />
+          </div>
+        )
+      }
+    
 
       {
         selectedNode?.componentIcon && (
@@ -38,7 +43,7 @@ const Main = () => {
             style={{
               border: `1px solid ${communColors.extra5}`,
               borderRadius: '4px',
-              width: '60%',
+              minWidth: isSmDown ? '100%' : '50%',
             }}
           >
             <ComponentInfo />

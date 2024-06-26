@@ -2,10 +2,12 @@ import { useSettings } from '../../contexts/settings';
 import SubHeader from '../../components/subHeader';
 import Main from '../../components/main';
 import Header from '../../components/header';
+import { useTheme } from '../../contexts/theme';
 
 
 const Home = () => {
-  const { selectedCompanie } = useSettings();
+  const { selectedCompanie, selectedNode } = useSettings();
+  const { isSmDown } = useTheme();
 
   return (
     <div>
@@ -18,7 +20,9 @@ const Home = () => {
               margin: '10px',
             }}
           >
-            <SubHeader />
+            {
+              isSmDown && selectedNode?.componentIcon ? null : <SubHeader />
+            }
             <Main />
           </div>
         )

@@ -73,6 +73,8 @@ const SettingsProvider = ({ children }: Props) => {
     } else {
       setSelectedCompanie(null);
     }
+  
+    setSelectedNode(null);
   };
 
   const providerValues: SettingsContext = {
