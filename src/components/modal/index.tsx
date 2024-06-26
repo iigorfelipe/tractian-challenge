@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { AddInput } from '../addInput';
 import { useTheme } from '../../contexts/theme';
+import { useSettings } from '../../contexts/settings';
 
 type AddCompanyModalProps = {
-  addCompany: (companyName: string) => void;
   isOpen: boolean;
   setIsOpen: (boolean: boolean) => void;
 };
 
 const AddCompanyModal = ({
-  addCompany,
   isOpen,
   setIsOpen
 }: AddCompanyModalProps) => {
   const [companyName, setCompanyName] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const { isSmDown } = useTheme();
+  const { addCompany, companies } = useSettings();
 
   const closeModal = () => {
     setIsOpen(false);
@@ -25,8 +25,11 @@ const AddCompanyModal = ({
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
+    const companyExists = companies.some((company) => {
+      return company.name.toLowerCase().trim() === value.toLowerCase().trim()
+    });
     setCompanyName(value);
-    setIsDisabled(!value.trim());
+    setIsDisabled(!value.trim() || companyExists);
   };
 
   const handleAddCompany = () => {

@@ -5,7 +5,7 @@ import { communColors } from '../../contexts/theme/theme';
 
 const ComponentInfo = () => {
   const { selectedNode, setSelectedNode } = useSettings();
-  const { isSmDown, theme } = useTheme();
+  const { isSmDown, theme, selectedTheme } = useTheme();
   
   const infos = {
     topLeft: [
@@ -46,7 +46,7 @@ const ComponentInfo = () => {
           alignItems: 'center',
           height: '50px',
           padding: '0px 20px',
-          borderBottom: `1px solid ${communColors.extra5}`,
+          borderBottom: `1px solid ${selectedTheme.colors.border}`,
           fontWeight: 600,
           fontSize: '18px',
           gap: '10px'
@@ -100,7 +100,7 @@ const ComponentInfo = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              border: `1px dashed ${communColors.extra5}`,
+              border: `1px dashed ${selectedTheme.colors.border}`,
               width: isSmDown ? '100%' : '336px',
               height: '226px',
               borderRadius: '4px',
@@ -143,7 +143,7 @@ const ComponentInfo = () => {
                     gap: '8px',
                     height: '50%',
                     width: '100%',            
-                    borderBottom: !isSmDown && index === 0 ? `1px solid ${communColors.extra5}` : 'none',                    
+                    borderBottom: !isSmDown && index === 0 ? `1px solid ${selectedTheme.colors.border}` : 'none',                    
                   }}
                 >
                   <span
@@ -204,7 +204,7 @@ const ComponentInfo = () => {
           style={{
             display: 'flex',
             height: '120px',
-            borderTop: `1px solid ${communColors.extra5}`,
+            borderTop: `1px solid ${selectedTheme.colors.border}`,
             marginTop: '30px'
           }}
         >

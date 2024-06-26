@@ -1,13 +1,12 @@
 import { useSettings } from "../../contexts/settings";
 import { useTheme } from "../../contexts/theme";
-import { communColors } from "../../contexts/theme/theme";
 import ComponentInfo from "../componentInfo";
 import SearchInput from "../searchInput";
 import TreeView from "../treeView";
 
 const Main = () => {
 
-  const { isSmDown, isMdDown } = useTheme();
+  const { isSmDown, isMdDown, selectedTheme } = useTheme();
   const { selectedNode } = useSettings();
 
   return (
@@ -24,7 +23,7 @@ const Main = () => {
         isSmDown && selectedNode?.componentIcon ? null : (
           <div
             style={{
-              border: `1px solid ${communColors.extra5}`,
+              border: `1px solid ${selectedTheme.colors.border}`,
               borderRadius: '4px',
               minWidth: isSmDown ? '100%' : '40%',
             }}
@@ -41,7 +40,7 @@ const Main = () => {
         selectedNode?.componentIcon && (
           <div
             style={{
-              border: `1px solid ${communColors.extra5}`,
+              border: `1px solid ${selectedTheme.colors.border}`,
               borderRadius: '4px',
               minWidth: isSmDown ? '100%' : '50%',
             }}

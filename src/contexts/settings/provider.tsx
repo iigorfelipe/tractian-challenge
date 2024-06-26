@@ -36,40 +36,56 @@ const SettingsProvider = ({ children }: Props) => {
   }, []);
 
   const addCompany = async (companyName: string) => {
-    setPending(true);
-    try {
-      const newCompany = await createCompany(companyName);
-      if (newCompany && newCompany.id) {
-        setCompanies([...companies, newCompany]);
+    // try {
+    //   const newCompany = await createCompany(companyName);
+    //   if (newCompany && newCompany.id) {
+    //     setCompanies([...companies, newCompany]);
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // };
+    setCompanies([
+      ...companies,
+      {
+        id: `fake-id-${companies.length + 1}`,
+        name: companyName
       }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setPending(false);
-    }
+    ]);
   };
 
   const handleSelectedCompanie = async (id: string) => {
     const company = companies.find((company) => company.id === id) || null;
 
     if (company && company.id && selectedCompanie?.company.id !== id) {
-      try {
-        setPending(true);
-        const [locations, assets] = await Promise.all([
-          getLocationsByCompany(company.id),
-          getAssetsByCompany(company.id)
-        ]);
 
+      if (id.includes('fake-id-')) {
         setSelectedCompanie({
           company,
-          locations,
-          assets,
+          locations: [],
+          assets: []
         });
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setPending(false);
+
+      } else {
+
+        try {
+          setPending(true);
+          const [locations, assets] = await Promise.all([
+            getLocationsByCompany(company.id),
+            getAssetsByCompany(company.id)
+          ]);
+
+          setSelectedCompanie({
+            company,
+            locations,
+            assets,
+          });
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setPending(false);
+        }
       }
+
     } else {
       setSelectedCompanie(null);
     }

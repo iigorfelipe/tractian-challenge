@@ -6,14 +6,13 @@ import AddCompanyModal from '../modal';
 
 
 const Header = () => {
-  const { toggleTheme, isSmDown, isMdDown, theme } = useTheme();
+  const { toggleTheme, isSmDown, isMdDown } = useTheme();
   const {
     handleSelectedCompanie,
     selectedCompanie,
     setSelectedCompanie,
     setSelectedNode,
     companies,
-    addCompany,
     pending
   } = useSettings();
 
@@ -251,7 +250,6 @@ const Header = () => {
           <img src='/add.svg' alt='add icon' />
         </button>
         <AddCompanyModal
-          addCompany={addCompany}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
         />

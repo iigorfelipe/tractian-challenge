@@ -6,7 +6,6 @@ export const communColors = {
   extra2: '#023B78',
   extra3: '#2188FF',
   extra4: '#24292F',
-  extra5: '#D8DFE6',
 }
 
 export const Light = {
@@ -15,6 +14,7 @@ export const Light = {
   colors: {
     bg: '#EAEAEA',
     txt: communColors.extra4,
+    border: '#D8DFE6',
 
     ...communColors,
   },
@@ -26,6 +26,8 @@ export const Dark = {
   colors: {
     bg: '#444',
     txt: '#FFF',
+    border: '#585454',
+
     ...communColors,
   },
 };
