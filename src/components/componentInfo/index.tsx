@@ -127,7 +127,6 @@ const ComponentInfo = () => {
               display: 'flex',
               flexDirection: isSmDown ? 'row' : 'column',
               width: isSmDown ? '100%' : '50%',
-              // gap: '10px',
               justifyContent: 'space-between'
             }}
           >
