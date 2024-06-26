@@ -67,3 +67,6 @@ A aplicação utiliza uma API fake para obter os dados das empresas, localizaç�
 - `/companies/:companyId/locations`: Retorna todas as localizações de uma empresa
 - `/companies/:companyId/assets`: Retorna todos os ativos de uma empresa
 
+## Autor
+
+- [Igor Felipe - Linkedin](https://www.linkedin.com/in/iigor-felipe/) 
