@@ -1,11 +1,14 @@
+import { useSettings } from "../../contexts/settings";
 import { useTheme } from "../../contexts/theme";
 import { communColors } from "../../contexts/theme/theme";
+import ComponentInfo from "../componentInfo";
 import SearchInput from "../searchInput";
 import TreeView from "../treeView";
 
 const Main = () => {
 
   const { isSmDown } = useTheme();
+  const { selectedNode } = useSettings();
 
   return (
     <div
@@ -29,15 +32,19 @@ const Main = () => {
         <TreeView />
       </div>
 
-      <div
-        style={{
-          border: `1px solid ${communColors.extra5}`,
-          borderRadius: '4px',
-          width: '60%',
-        }}
-      >
-
-      </div>
+      {
+        selectedNode?.componentIcon && (
+          <div
+            style={{
+              border: `1px solid ${communColors.extra5}`,
+              borderRadius: '4px',
+              width: '60%',
+            }}
+          >
+            <ComponentInfo />
+          </div>
+        )
+      }
 
     </div>
   );

@@ -5,11 +5,10 @@ import { useTheme } from '../../contexts/theme';
 
 type TreeItemProps = {
   node: TreeNode;
-  selectedNode: TreeNode | null;
-  setSelectedNode: (node: TreeNode | null) => void;
 };
 
-const TreeItem = ({ node, selectedNode, setSelectedNode }: TreeItemProps) => {
+const TreeItem = ({ node }: TreeItemProps) => {
+  const { selectedNode, setSelectedNode } = useSettings();
   const [expanded, setExpanded] = useState(false);
   const { theme } = useTheme();
 
@@ -69,8 +68,6 @@ const TreeItem = ({ node, selectedNode, setSelectedNode }: TreeItemProps) => {
                 <TreeItem
                   key={child.id}
                   node={child}
-                  selectedNode={selectedNode}
-                  setSelectedNode={setSelectedNode}
                 />
               ))
             }
@@ -84,7 +81,6 @@ const TreeItem = ({ node, selectedNode, setSelectedNode }: TreeItemProps) => {
 const TreeView = () => {
   const { selectedCompanie } = useSettings();
   const treeData = selectedCompanie ? useTreeData(selectedCompanie) : null;
-  const [selectedNode, setSelectedNode] = useState<TreeNode | null>(null);
 
   return (
     <div style={{ marginTop: '10px'}}>
@@ -93,8 +89,6 @@ const TreeView = () => {
           <TreeItem
             key={data.id}
             node={data}
-            selectedNode={selectedNode}
-            setSelectedNode={setSelectedNode}
           />
         ))
       }

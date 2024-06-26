@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { Company, TreeView } from '../../services/types/treeView';
+import { TreeNode } from '../../hooks/useTreeData';
 
 export type AssetTitle = 'Apex Unit' | 'Tobias Unit' | 'Jaguar Unit';
 export type AssetLabel = 'apexUnit' | 'tobiasUnit' | 'jaguarUnit';
@@ -25,6 +26,8 @@ export type SettingsContext = {
   setCompanies: React.Dispatch<React.SetStateAction<Company[]>>;
   addCompany: (companyName: string) => void;
   pending: boolean;
+  selectedNode: TreeNode | null;
+  setSelectedNode: React.Dispatch<React.SetStateAction<TreeNode | null>>
 };
 
 export const defaultSettingsValues: SettingsContext = {
@@ -36,7 +39,9 @@ export const defaultSettingsValues: SettingsContext = {
   companies: [],
   setCompanies: () => {},
   addCompany: () => {},
-  pending: false
+  pending: false,
+  selectedNode: null,
+  setSelectedNode: () => {}
 };
 
 export const SettingsContext = createContext<SettingsContext>(defaultSettingsValues);

@@ -6,6 +6,7 @@ import { Company, TreeView } from '../../services/types/treeView';
 import { getAssetsByCompany } from '../../services/api/assets';
 
 import { Asset, SettingsContext, initialAsset } from './context';
+import { TreeNode } from '../../hooks/useTreeData';
 
 type Props = {
   children: ReactNode;
@@ -15,6 +16,7 @@ const SettingsProvider = ({ children }: Props) => {
   const [asset, setAsset] = useState<Asset>(initialAsset);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [selectedCompanie, setSelectedCompanie] = useState<TreeView | null>(null);
+  const [selectedNode, setSelectedNode] = useState<TreeNode | null>(null);
   const [pending, setPending] = useState(false);
 
   useEffect(() => {
@@ -82,7 +84,9 @@ const SettingsProvider = ({ children }: Props) => {
     companies,
     setCompanies,
     addCompany,
-    pending
+    pending,
+    selectedNode,
+    setSelectedNode
   };
 
   return (
