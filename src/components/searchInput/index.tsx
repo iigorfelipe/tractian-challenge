@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSettings } from '../../contexts/settings';
 import { communColors } from '../../contexts/theme/theme';
 import './index.css';
@@ -8,14 +7,13 @@ type SearchInputProps = {
 };
 
 const SearchInput = ({ placeholder }: SearchInputProps) => {
-  const { setFilters } = useSettings();
-  const [inputValue, setInputValue] = useState('');
+  const { setFilters, searchInputValue, setSearchInputValue } = useSettings();
 
   const onClick = () => {
     setFilters((prev) => {
       return {
         ...prev,
-        search: inputValue
+        search: searchInputValue
       }
     });
   }
@@ -26,8 +24,8 @@ const SearchInput = ({ placeholder }: SearchInputProps) => {
         type="text"
         className="search__input"
         placeholder={placeholder}
-        value={inputValue}
-        onChange={({ target: { value }}) => setInputValue(value)}
+        value={searchInputValue}
+        onChange={({ target: { value }}) => setSearchInputValue(value)}
       />
       <button
         className="search__button"

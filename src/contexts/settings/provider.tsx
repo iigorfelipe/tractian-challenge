@@ -19,6 +19,7 @@ const SettingsProvider = ({ children }: Props) => {
   const [selectedNode, setSelectedNode] = useState<TreeNode | null>(null);
   const [pending, setPending] = useState(false);
   const [filters, setFilters] = useState(initialFilters);
+  const [searchInputValue, setSearchInputValue] = useState('');
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -92,6 +93,8 @@ const SettingsProvider = ({ children }: Props) => {
     }
   
     setSelectedNode(null);
+    setFilters(initialFilters);
+    setSearchInputValue('');
   };
 
   const providerValues: SettingsContext = {
@@ -107,7 +110,9 @@ const SettingsProvider = ({ children }: Props) => {
     selectedNode,
     setSelectedNode,
     filters,
-    setFilters
+    setFilters,
+    searchInputValue,
+    setSearchInputValue
   };
 
   return (

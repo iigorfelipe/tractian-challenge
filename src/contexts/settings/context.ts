@@ -43,6 +43,8 @@ export type SettingsContext = {
 
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+  searchInputValue: string;
+  setSearchInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const defaultSettingsValues: SettingsContext = {
@@ -58,7 +60,9 @@ export const defaultSettingsValues: SettingsContext = {
   selectedNode: null,
   setSelectedNode: () => {},
   filters: initialFilters,
-  setFilters: () => {}
+  setFilters: () => {},
+  searchInputValue: '',
+  setSearchInputValue: () => {}
 };
 
 export const SettingsContext = createContext<SettingsContext>(defaultSettingsValues);
