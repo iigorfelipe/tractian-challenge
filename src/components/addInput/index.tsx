@@ -4,7 +4,7 @@ import './index.css';
 type AddInputProps = {
   placeholder: string;
   value: string;
-  onChange: (event: any) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   buttonClick: () => void;
   isDisabled: boolean;
 }

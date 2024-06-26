@@ -7,10 +7,11 @@ export type TreeNode = {
   icon: string;
   componentIcon?: string;
   children?: TreeNode[];
-  sensor:  string;
-  receiver:  string;
-  equipmentType:  string;
-  responsible:  string;
+  sensor: string;
+  receiver: string;
+  equipmentType: string;
+  responsible: string;
+  autoExpand?: boolean;
 };
 
 const useTreeData = (selectedCompanie: TreeView) => {

@@ -41,7 +41,7 @@ self.addEventListener('message', function(e) {
       if (asset.sensorType) {
         icon = '/component.png';
         if (asset.sensorType === 'energy') {
-          componentIcon = `/energy.svg`;
+          componentIcon = '/energy.svg';
         }
       } else if (asset.locationId && !asset.sensorId) {
         icon = '/cube.svg';

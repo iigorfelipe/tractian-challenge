@@ -6,11 +6,18 @@ import { communColors } from "../../contexts/theme/theme";
 
 const SubHeader = () => {
   const { isSmDown } = useTheme();
-  const { selectedCompanie } = useSettings();
+  const { selectedCompanie, setFilters } = useSettings();
   const [selectedButton, setSelectedButton] = useState<ButtonLabel>(null);
 
   const handleSelectedButton = (button: ButtonLabel) => {
     setSelectedButton((prev) => prev === button ? null : button);
+    setFilters((prev) => {
+      return {
+        ...prev,
+        sensor: button === 'sensor' ? (prev.sensor ? false : true) : false,
+        status: button === 'status' ? (prev.status ? false : true) : false
+      };
+    })
   };
 
   useEffect(() => {

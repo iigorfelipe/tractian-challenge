@@ -1,11 +1,11 @@
 import { ReactNode, useEffect, useState } from 'react';
 
-import { createCompany, getAllCompanies } from '../../services/api/companies';
+import { getAllCompanies } from '../../services/api/companies';
 import { getLocationsByCompany } from '../../services/api/locations';
 import { Company, TreeView } from '../../services/types/treeView';
 import { getAssetsByCompany } from '../../services/api/assets';
 
-import { Asset, SettingsContext, initialAsset } from './context';
+import { Asset, SettingsContext, initialAsset, initialFilters } from './context';
 import { TreeNode } from '../../hooks/useTreeData';
 
 type Props = {
@@ -18,6 +18,7 @@ const SettingsProvider = ({ children }: Props) => {
   const [selectedCompanie, setSelectedCompanie] = useState<TreeView | null>(null);
   const [selectedNode, setSelectedNode] = useState<TreeNode | null>(null);
   const [pending, setPending] = useState(false);
+  const [filters, setFilters] = useState(initialFilters);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -104,7 +105,9 @@ const SettingsProvider = ({ children }: Props) => {
     addCompany,
     pending,
     selectedNode,
-    setSelectedNode
+    setSelectedNode,
+    filters,
+    setFilters
   };
 
   return (

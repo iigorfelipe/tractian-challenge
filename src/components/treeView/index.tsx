@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSettings } from '../../contexts/settings';
 import useTreeData, { TreeNode } from '../../hooks/useTreeData';
 import { useTheme } from '../../contexts/theme';
+import useFilteredTreeData from '../../hooks/useFilteredTreeData';
 
 type TreeItemProps = {
   node: TreeNode;
+  autoExpand?: boolean;
 };
 
-const TreeItem = ({ node }: TreeItemProps) => {
+const TreeItem = ({ node, autoExpand }: TreeItemProps) => {
   const { selectedNode, setSelectedNode } = useSettings();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(autoExpand);
   const { theme } = useTheme();
 
   const isSelected = selectedNode?.id === node.id;
@@ -18,6 +20,12 @@ const TreeItem = ({ node }: TreeItemProps) => {
     setExpanded(!expanded);
     setSelectedNode(node);
   };
+
+  useEffect(() => {
+    if (autoExpand) {
+      setExpanded(true);
+    }
+  }, [autoExpand]);
 
   return (
     <div style={{ marginLeft: '20px' }}>
@@ -68,6 +76,7 @@ const TreeItem = ({ node }: TreeItemProps) => {
                 <TreeItem
                   key={child.id}
                   node={child}
+                  autoExpand={true}
                 />
               ))
             }
@@ -79,16 +88,18 @@ const TreeItem = ({ node }: TreeItemProps) => {
 };
 
 const TreeView = () => {
-  const { selectedCompanie } = useSettings();
+  const { selectedCompanie, filters } = useSettings();
   const treeData = selectedCompanie ? useTreeData(selectedCompanie) : null;
+  const filteredTreeData = useFilteredTreeData(treeData || [], filters);
 
   return (
     <div style={{ marginTop: '10px'}}>
       {
-        treeData?.map((data) => (
+        filteredTreeData?.map((data) => (
           <TreeItem
             key={data.id}
             node={data}
+            autoExpand={data.autoExpand}
           />
         ))
       }

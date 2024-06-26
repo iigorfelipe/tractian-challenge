@@ -1,4 +1,4 @@
-export type ButtonLabel = 'energySensor' | 'critical' | null;
+export type ButtonLabel = 'sensor' | 'status' | null;
 
 type ButtonsType = {
   title: 'Sensor de Energia' | 'Crítico';
@@ -9,12 +9,12 @@ type ButtonsType = {
 export const buttons: ButtonsType[] = [
   {
     title: 'Sensor de Energia',
-    label: 'energySensor',
+    label: 'sensor',
     icon: '/lightning'
   },
   {
     title: 'Crítico',
-    label: 'critical',
+    label: 'status',
     icon: '/critic'
   }
 ];

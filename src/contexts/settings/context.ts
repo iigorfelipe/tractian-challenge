@@ -15,6 +15,18 @@ export const initialAsset: Asset = {
   label: 'apexUnit',
 }
 
+export type Filters = {
+  search: string;
+  sensor: boolean;
+  status: boolean;
+};
+
+export const initialFilters = {
+  search : '',
+  sensor: false,
+  status: false
+}
+
 export type SettingsContext = {
   asset: Asset;
   setAsset: React.Dispatch<React.SetStateAction<Asset>>;
@@ -27,7 +39,10 @@ export type SettingsContext = {
   addCompany: (companyName: string) => void;
   pending: boolean;
   selectedNode: TreeNode | null;
-  setSelectedNode: React.Dispatch<React.SetStateAction<TreeNode | null>>
+  setSelectedNode: React.Dispatch<React.SetStateAction<TreeNode | null>>;
+
+  filters: Filters;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
 };
 
 export const defaultSettingsValues: SettingsContext = {
@@ -41,7 +56,9 @@ export const defaultSettingsValues: SettingsContext = {
   addCompany: () => {},
   pending: false,
   selectedNode: null,
-  setSelectedNode: () => {}
+  setSelectedNode: () => {},
+  filters: initialFilters,
+  setFilters: () => {}
 };
 
 export const SettingsContext = createContext<SettingsContext>(defaultSettingsValues);
