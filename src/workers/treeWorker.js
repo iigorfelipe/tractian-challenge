@@ -3,7 +3,7 @@ self.addEventListener('message', function(e) {
 
   const buildLocationTree = (locations) => {
     const locationMap = {};
-    locations.forEach(location => {
+    locations.forEach((location) => {
       locationMap[location.id] = {
         id: location.id,
         label: location.name,
@@ -13,7 +13,7 @@ self.addEventListener('message', function(e) {
     });
 
     const rootLocations = [];
-    locations.forEach(location => {
+    locations.forEach((location) => {
       if (location.parentId) {
         const parent = locationMap[location.parentId];
         if (parent) {
@@ -30,7 +30,8 @@ self.addEventListener('message', function(e) {
   const addAssetsToLocationTree = (locationsTree, assets) => {
     const assetMap = {};
 
-    assets.forEach(asset => {
+    assets.forEach((asset) => {
+      console.log({ asset })
       let icon = '';
       let componentIcon = '';
 
@@ -54,11 +55,15 @@ self.addEventListener('message', function(e) {
         label: asset.name,
         children: [],
         icon,
-        componentIcon
+        componentIcon,
+        sensor: asset.sensorId,
+        receiver: asset.gatewayId,
+        equipmentType: 'Motor Elétrico (Trifásico)',
+        responsible: asset.status === 'alert' ? 'Mecânica' : 'Elétrica',
       };
     });
 
-    assets.forEach(asset => {
+    assets.forEach((asset) => {
       if (asset.parentId) {
         const parent = assetMap[asset.parentId];
         if (parent) {
@@ -68,7 +73,7 @@ self.addEventListener('message', function(e) {
     });
 
     const addAssetsToLocation = nodes => {
-      nodes.forEach(node => {
+      nodes.forEach((node) => {
         assets.forEach(asset => {
           if (asset.locationId === node.id) {
             node.children.push(assetMap[asset.id]);
@@ -83,8 +88,9 @@ self.addEventListener('message', function(e) {
 
     addAssetsToLocation(locationsTree);
 
-    const rootAssets = assets.filter(asset => !asset.locationId && !asset.parentId)
-      .map(asset => assetMap[asset.id]);
+    const rootAssets = assets
+      .filter((asset) => !asset.locationId && !asset.parentId)
+      .map((asset) => assetMap[asset.id]);
 
     return [...locationsTree, ...rootAssets];
   };
