@@ -1,5 +1,7 @@
 # TRACTIAN Challenge
 
+- ### [Clique para ver a aplicação rodando](https://iigorfelipe.github.io/tractian-challenge/)
+
 ## Tecnologias Utilizadas
 
 - TypeScript
