@@ -149,6 +149,7 @@ const ComponentInfo = () => {
                     style={{
                       fontWeight: 600,
                       fontSize: '16px',
+                      textAlign: isSmDown ? 'center' : 'start',
                     }}
                   >
                     {title}
