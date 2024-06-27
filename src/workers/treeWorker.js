@@ -8,7 +8,7 @@ self.addEventListener('message', function(e) {
         id: location.id,
         label: location.name,
         children: [],
-        icon: '/location.svg'
+        icon: './location.svg'
       };
     });
 
@@ -35,18 +35,18 @@ self.addEventListener('message', function(e) {
       let componentIcon = '';
 
       if (asset.status) {
-        componentIcon = `/${asset.status}.svg`;
+        componentIcon = `./${asset.status}.svg`;
       }
 
       if (asset.sensorType) {
-        icon = '/component.png';
+        icon = './component.png';
         if (asset.sensorType === 'energy') {
-          componentIcon = '/energy.svg';
+          componentIcon = './energy.svg';
         }
       } else if (asset.locationId && !asset.sensorId) {
-        icon = '/cube.svg';
+        icon = './cube.svg';
       } else if (asset.parentId && !asset.sensorId) {
-        icon = '/cube.svg';
+        icon = './cube.svg';
       }
 
       assetMap[asset.id] = {

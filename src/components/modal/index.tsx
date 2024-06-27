@@ -67,7 +67,7 @@ const AddCompanyModal = ({
           borderRadius: isSmDown ? '20px' : '0px'
         }}
       >
-        <img src='/close.svg' alt='close icon' />
+        <img src='./close.svg' alt='close icon' />
       </button>
     </div>
   );

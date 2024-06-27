@@ -10,11 +10,11 @@ export const buttons: ButtonsType[] = [
   {
     title: 'Sensor de Energia',
     label: 'sensor',
-    icon: '/lightning'
+    icon: './lightning'
   },
   {
     title: 'Crítico',
     label: 'status',
-    icon: '/critic'
+    icon: './critic'
   }
 ];

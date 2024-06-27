@@ -21,12 +21,12 @@ const ComponentInfo = () => {
     bottom: [
       {
         title: 'Sensor',
-        icon: '/sign.svg',
+        icon: './sign.svg',
         value: selectedNode?.sensor
       },
       {
         title: 'Receptor',
-        icon: '/modem.svg',
+        icon: './modem.svg',
         value: selectedNode?.receiver
       },
     ],
@@ -66,7 +66,7 @@ const ComponentInfo = () => {
               }}
               onClick={() => setSelectedNode(null)}
             >
-              <img src={`/arrow-back-${theme}.svg`} alt='arrow back' />
+              <img src={`./arrow-back-${theme}.svg`} alt='arrow back' />
             </button>
           )
         }
@@ -108,7 +108,7 @@ const ComponentInfo = () => {
               cursor: 'pointer'
             }}
           >
-            <img src='/add-image.svg' alt='add image' />
+            <img src='./add-image.svg' alt='add image' />
             <span
               style={{
                 color: communColors.extra3,

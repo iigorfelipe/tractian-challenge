@@ -55,7 +55,7 @@ const Header = () => {
         justifyContent: 'center'
       }}
     >
-      <img src='/theme.svg' alt='theme icon' />
+      <img src='./theme.svg' alt='theme icon' />
     </button>
   );
 
@@ -80,7 +80,7 @@ const Header = () => {
           cursor: 'pointer'
         }}
       >
-        <img src='/arrow-back-dark.svg' alt='arrow back' />
+        <img src='./arrow-back-dark.svg' alt='arrow back' />
       </button>
 
       <span style={{ color: 'white' }}>{selectedCompanie.company.name}</span>
@@ -100,7 +100,7 @@ const Header = () => {
       }}
     >
       <div style={{ marginTop: isSmDown ? '18px' : '0px' }}>
-        <img src='/logo.svg' alt='logo' />
+        <img src='./logo.svg' alt='logo' />
       </div>
 
       <div
@@ -139,7 +139,7 @@ const Header = () => {
                 }}
               >
                 <img
-                  src='/cubes-light.svg'
+                  src='./cubes-light.svg'
                   alt="cubes-icon"
                   style={{
                     marginRight: '5px',
@@ -214,7 +214,7 @@ const Header = () => {
                           }}
                         >
                           <img
-                            src='/cubes-light.svg'
+                            src='./cubes-light.svg'
                             alt="cubes-icon"
                             style={{
                               marginRight: '5px',
@@ -247,7 +247,7 @@ const Header = () => {
             justifyContent: 'center'
           }}
         >
-          <img src='/add.svg' alt='add icon' />
+          <img src='./add.svg' alt='add icon' />
         </button>
         <AddCompanyModal
           isOpen={isOpen}

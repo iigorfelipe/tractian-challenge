@@ -44,7 +44,7 @@ const TreeItem = ({ node, autoExpand }: TreeItemProps) => {
         {
           node.children && node.children.length > 0 ? (
             <img
-              src={`/arrow-down-${theme}.svg`}
+              src={`./arrow-down-${theme}.svg`}
               alt="arrow down"
             />
           ) : <div />
@@ -53,8 +53,8 @@ const TreeItem = ({ node, autoExpand }: TreeItemProps) => {
           src={node.icon}
           alt="node"
           style={{
-            width: node.icon === '/component.png' ? '20px' : '',
-            height: node.icon === '/component.png' ? '20px' : ''
+            width: node.icon === './component.png' ? '20px' : '',
+            height: node.icon === './component.png' ? '20px' : ''
           }}
         />
         {node.label}
