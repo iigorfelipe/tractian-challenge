@@ -74,4 +74,8 @@ A aplicação utiliza uma API fake para obter os dados das empresas, localizaç�
 
 ## Autor
 
-- [Igor Felipe - Linkedin](https://www.linkedin.com/in/iigor-felipe/) 
+- [Igor Felipe - Linkedin](https://www.linkedin.com/in/iigor-felipe/)
+
+##
+
+[tractian.webm](https://github.com/iigorfelipe/tractian-challenge/assets/87145566/18572d58-efce-4cc3-81fa-5a6cba1ba62e)
