@@ -2,35 +2,13 @@
 
 - ### [Clique para ver a aplicação rodando](https://iigorfelipe.github.io/tractian-challenge/)
 
-## Tecnologias Utilizadas
-
-- TypeScript
-- React - `Vite (react-ts)`
-
-## Executando o Projeto Localmente
-Clone o repositório para sua máquina:
-```bash
-git clone git@github.com:iigorfelipe/tractian-challenge.git
-```
-
-Entre na pasta do projeto:
-```bash
-cd tractian-challenge
-```
-
-Instale as dependências:
-```bash
-npm install
-```
-Execute o projeto:
-```bash
-npm run dev
-```
+<div align="center">
+  <img src="https://github.com/iigorfelipe/tractian-challenge/assets/87145566/260b55d2-f8d8-433c-8507-42f057f9c5dd" />
+</div>
 
 ## Descrição
 
 - Este projeto é uma aplicação de visualização de árvore de ativos, desenvolvida como parte de um desafio frontend recebido da empresa TRACTIAN. A aplicação permite a visualização hierárquica dos ativos de uma empresa, incluindo componentes, ativos e localizações. A árvore suporta funcionalidades de filtragem e exibição responsiva para web e dispositivos móveis, além de possuir suporte a temas claro e escuro.
-
 
 ## Filtros:
 - Pesquisa por Texto: Permite aos usuários buscar componentes, ativos e localizações específicas dentro da hierarquia de ativos.
@@ -58,6 +36,31 @@ Se houvesse mais tempo, as seguintes melhorias poderiam ser implementadas:
 
 - Refatoração: Estou ciente da quantidade de código repetido e planejo realizar uma refatoração para melhorar a organização e a manutenção do código. Inicialmente, meu foco foi terminar o projeto, mas pretendo otimizar o código em breve.
 
+
+## Tecnologias Utilizadas
+
+- TypeScript
+- React - `Vite (react-ts)`
+
+## Executando o Projeto Localmente
+Clone o repositório para sua máquina:
+```bash
+git clone git@github.com:iigorfelipe/tractian-challenge.git
+```
+
+Entre na pasta do projeto:
+```bash
+cd tractian-challenge
+```
+
+Instale as dependências:
+```bash
+npm install
+```
+Execute o projeto:
+```bash
+npm run dev
+```
 
 ## API
 
