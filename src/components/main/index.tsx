@@ -18,7 +18,6 @@ const Main = () => {
         gap: '10px'
       }}
     >
-
       {
         isSmDown && selectedNode?.componentIcon ? null : (
           <div
@@ -29,27 +28,12 @@ const Main = () => {
             }}
           >
             <SearchInput placeholder="Buscar Ativo ou Local" />
-    
             <TreeView />
           </div>
         )
       }
-    
 
-      {
-        selectedNode?.componentIcon && (
-          <div
-            style={{
-              border: `1px solid ${selectedTheme.colors.border}`,
-              borderRadius: '4px',
-              minWidth: isSmDown ? '100%' : '50%',
-            }}
-          >
-            <ComponentInfo />
-          </div>
-        )
-      }
-
+      {selectedNode?.componentIcon && <ComponentInfo />}
     </div>
   );
 };
